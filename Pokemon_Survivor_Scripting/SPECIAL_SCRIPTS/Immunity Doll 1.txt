@@ -1,0 +1,44 @@
+' This is for the immunity doll in the Area of Life.
+' In short, we will check whether certain variables for specific people are activated or not, and activates these in an order.
+' So, one must talk to one object, another, etc etc, in a SPECIFIED order.
+' A hint can be placed somewhere detailing, in a type of code or whatever, the order.
+' Script made by: Nonibros
+'-----------
+' Script Start
+'-----------
+#dynamic 0x7B0000
+
+'---------
+' Main Function
+'---------
+
+' This portion will run a universal script that will check your stored variable for the object or person, the checking variable against it, and if stored = check, then set the stored varible to next variable.
+' The Script:
+
+#org @checkmasterballorder
+comparevars 0x5100 0x4002 ' We then compare our STORED variable to the checking variable.
+if 0x1 goto @nextvar ' If they are =, we will change stored variable + 1.
+comparevars 0x5100 0x4003 ' Compare our STORED variable to the next variable to see if we've talked to this person right before, so we don't reset.
+if 0x1 goto @justreturn ' Keep stored variable the same by not doing anything.
+goto @resetvar ' If they are not =, reset stored variable to 0.
+end
+
+#org @nextvar
+copyvar 0x5100 0x4003 ' Since we have passed the check, we store into stored variable our next checking variable, which is the object number.
+return
+
+#org @justreturn
+return ' We will not do anything but instead we will just return.
+
+#org @resetvar
+setvar 0x5100 0x0 ' Reset stored variable to 0, return to the script.
+return
+
+'---------
+' Main Function End
+'---------
+
+
+'-----------
+' Script End
+'-----------
