@@ -39,7 +39,7 @@ end
 '---------
 
 #org @pokestatuemessage
-= This is a beautifully crafted\nstatue of a Pok/h1bmon.\pIt looks very expensive.
+= This is a beautifully crafted\nstatue of a Pok\h1bmon.\pIt looks very expensive.
 
 '---------
 ' Strings End
