@@ -1,0 +1,88 @@
+This is a file displaying what variables have already been used, and what can be used.
+
+Block areas:
+0x780000 - 0x7FFFFF is where scripts are kept.
+If the project needs more then this, either Nonibros or Hajima will find a new space for it.
+
+0xB00000 - New maps.
+
+0xC00000 - New tilescripts.
+
+0xBB0000 - New map names.
+
+
+Now for the reserved section.
+
+Special offsets:
+0x780000 is a special offset.
+We use this for anything NOT programmed yet, so that when the game is complete and there are beta testers or players, they can say "Dude, the blah on map blah told me to tell you that it doesn't work."
+This is used as a sort of correction system, so that if errors in the game are found, they can be fixed.
+
+Flag blocks:
+0xC00 - 0xCFF - Reserved for removing/showing people.
+0xA00 - 0xBFF - Reserved for giving items.
+0xC00 - 0xCFF - Reserved for special event flags.
+0xE00 - 0xEFF - Reserved for shiny trainer flags.
+0x1100 - 0x110F - Reserved for hidden immunity doll game final object flags.
+0x1100 - Reserved for finishing the first hidden immunity doll game.
+0x1101 - Not yet used.
+
+0xC00 - 0xC03 - Reserved for hidden immunity doll game showing/hiding hidden immunity doll giver.
+0xC00 - Reserved for the guard in the first map in the game, whom gives the player a doll on completion of the mini game.
+
+Reserved Flags:
+0xAA1 - Reserved for setting a NPC position flag.
+0xAA2 - Reserved for setting a NPC position flag.
+0xAA3 - Reserved for setting a NPC position flag.
+0xAA4 - Reserved for setting a NPC position flag.
+0xAA5 - Reserved for setting a NPC position flag.
+0xAA6 - Reserved for setting a NPC position flag.
+0xAA7 - Reserved for setting a NPC position flag.
+0xAA8 - Reserved for setting a NPC position flag.
+0xAA9 - Reserved for setting a NPC position flag.
+0xAAA - Reserved for setting a NPC position flag.
+0xAAB - Reserved for setting a NPC position flag.
+
+
+0xXXXX 0xY - Means that when 0xXXXX is set to 0xY this will activate the specified event. Look below for examples.
+
+Reserved Variables:
+0x5080 - Reserved for X position of the player in the game area.
+0x5090 - Reserved for Y position of the player in the game area.
+
+0x5100 - 0x5103 - Reserved for hidden immunity dolls.
+0x5100 - This is for the first immunity doll, to see what item we are at.
+0x5101 - NOT USED YET!
+
+0x5150 - 0x5157 - Reserved for temporary variables.
+
+This is a script for the very first map. Only Nonibros or someone very trusted can use this.
+It sets all necessary flags to 1. Useful for hiding NPCs, like professor oak in his lab, at the very beginning of the game.
+Script:
+
+' As soon as we start the game, this activates.
+' This is used to set certain people IDs that shouldn't show up at the beginning of the game. Example is professor Oak in his lab.
+' Set this level script to type 04, Validates values...
+' In Advance Map, set "Flag:" to "5001" and set "Value:" to "0000"
+'-----------
+' Script Start
+'-----------
+
+#dynamic 0x980000
+
+#org @setinitialflags
+setflag 0xC00 ' Immunity doll 1 person.
+setflag 0xC01 ' Immunity doll 2 person.
+setflag 0xC02 ' Immunity doll 3 person.
+setflag 0xC03 ' Immunity doll 4 person.
+setflag 0xC10 ' LegendChu/Lt. Surge flag.
+clearflag 0x1100 ' Immunity Doll game 1 Flag.
+clearflag 0x1101 ' Immunity Doll game 2 Flag.
+clearflag 0x1102 ' Immunity Doll game 3 Flag.
+clearflag 0x1103 ' Immunity Doll game 4 Flag.
+setvar 0x5001 0x1
+end
+
+'-----------
+' Script End
+'-----------
