@@ -1,0 +1,81 @@
+' This is for the third rock and final object in the hidden doll game.
+' Script made by: Nonibros
+'-----------
+' Script Start
+'-----------
+
+#dynamic 0x780000
+
+'---------
+' Hidden Immunity Doll Game Function
+'---------
+#org @immunitydoll
+checkflag 0x1100 ' Checks whether we have obtained the first immunity doll.
+if 0x1 goto @arock ' Displays a regular rock message. ' If we have, stop the script. If not, set up the variables and check.
+compare 0x5100 0x9 ' We need to check whether we are in the final item of the immunitydoll check. Final var is replace with the last object you want - 1. Say you have a game with 6 people. 0x(finalvar) would = 5.
+if 0x1 goto @finalflagset ' If we are at the final object, we need to set a specific flag to say that we are in the final version.
+call @resetvar ' Reset the variable to 0.
+goto @arock ' Displays a regular rock message.
+end ' Simply end the script, since we are talking to the rug.
+
+#org @finalflagset ' Here we set our final flag. When we come back to the script that called this, if this flag is set to true, we should run a custom script.
+setflag 0x1100 ' Set our final flag to 1.
+setvar 0x5100 0xFF ' I just felt like adding a termination to the variable.
+goto @showguardmain ' Show the NPC.
+end
+
+#org @resetvar
+setvar 0x5100 0x0 ' Reset stored variable to 0, return to the script.
+goto @arock ' Displays a regular rock message.
+return
+
+'---------
+' Hidden Immunity Doll Game Function End
+'---------
+
+'---------
+' Show Guard Script
+'---------
+
+#org @showguardmain
+lockall
+fadescreen 0x1 ' Fade to black
+clearflag 0xC00 ' Show the person who gives the Immunity doll.
+showsprite 0xP ' Shows them.
+fadescreen 0x0 ' Fade to normal.
+releaseall 'release the player
+goto @arock ' Displays a regular rock message.
+end
+
+'---------
+' Show Guard Script End
+'---------
+
+'---------
+' Main Function
+'---------
+
+#org @arock ' Object message.
+msgbox @arockmessage 0x3
+end
+
+'---------
+' Main Function End
+'---------
+
+'---------
+' Strings
+'---------
+
+#org @arockmessage
+= It's a very white rock.\pIt most likely comes from space,\nas there are no other rocks like\lthis one anywhere else.
+
+
+'---------
+' Strings End
+'---------
+
+
+'-----------
+' Script End
+'-----------

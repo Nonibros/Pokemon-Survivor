@@ -13,8 +13,8 @@
 #org @immunitydoll
 checkflag 0x1100 ' Checks whether we have obtained the first immunity doll.
 if 0x1 goto @pokestatue ' If we have, stop the script. If not, set up the variables and check.
-setvar 0x4002 0X0 'Set our checking variable = the object orders number - 1. Eg. 5th object in line would be 4.
-setvar 0x4003 0X1 'Set our checking variable = the object orders number. Eg. 5th object in line would be 5. This is for the next check. This line is Not NEEDED FOR the LAST OBJECT.
+setvar 0x4002 0X2 'Set our checking variable = the object orders number - 1. Eg. 5th object in line would be 4.
+setvar 0x4003 0X3 'Set our checking variable = the object orders number. Eg. 5th object in line would be 5. This is for the next check. This line is Not NEEDED FOR the LAST OBJECT.
 call 0X87B0000 ' Call the order checking script offset.
 goto @pokestatue ' If we are at the final object, we tell the player.
 

@@ -1,0 +1,35 @@
+' This is for any plants in the Area of Life.
+' Script by: Nonibros.
+'-----------
+' Script Start
+'-----------
+
+#dynamic 0x780000
+
+'---------
+' Main Function
+'---------
+
+#org @flowerplant ' Object message.
+msgbox @flowerplantmessage 0x3
+end
+
+'---------
+' Main Function End
+'---------
+
+'---------
+' Strings
+'---------
+
+#org @flowerplantmessage
+= It's a pretty, well kept, flower\nwhich shines like the moon.
+
+'---------
+' Strings End
+'---------
+
+
+'-----------
+' Script End
+'-----------

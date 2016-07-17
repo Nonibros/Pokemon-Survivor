@@ -1,0 +1,35 @@
+' This is for the first statue in the Area of Life.
+' Script by: Nonibros.
+'-----------
+' Script Start
+'-----------
+
+#dynamic 0x780000
+
+'---------
+' Main Function
+'---------
+
+#org @arock ' Object message.
+msgbox @arockmessage 0x3
+end
+
+'---------
+' Main Function End
+'---------
+
+'---------
+' Strings
+'---------
+
+#org @arockmessage
+= It's simply a rock.\pIt's probably supposed to give\nthe area a chilling and dark\latmosphere, but who knows?
+
+'---------
+' Strings End
+'---------
+
+
+'-----------
+' Script End
+'-----------

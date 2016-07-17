@@ -1,0 +1,51 @@
+' This is for the first statue in the Area of Life.
+' Script by: Nonibros.
+'-----------
+' Script Start
+'-----------
+
+#dynamic 0x780000
+
+'---------
+' Hidden Immunity Doll Game Function
+'---------
+
+#org @immunitydoll
+checkflag 0x1100 ' Checks whether we have obtained the first immunity doll.
+if 0x1 goto @flowerplant ' If we have, stop the script. If not, set up the variables and check.
+setvar 0x4002 0X4 'Set our checking variable = the object orders number - 1. Eg. 5th object in line would be 4.
+setvar 0x4003 0X5 'Set our checking variable = the object orders number. Eg. 5th object in line would be 5. This is for the next check. This line is Not NEEDED FOR the LAST OBJECT.
+call 0X87B0000 ' Call the order checking script offset.
+goto @flowerplant ' If we are at the final object, we tell the player.
+
+'---------
+' Hidden Immunity Doll Game Function End
+'---------
+
+'---------
+' Main Function
+'---------
+
+#org @flowerplant ' Object message.
+msgbox @flowerplantmessage 0x3
+end
+
+'---------
+' Main Function End
+'---------
+
+'---------
+' Strings
+'---------
+
+#org @flowerplantmessage
+= It's a pretty, well kept, flower\nwhich shines like the moon.
+
+'---------
+' Strings End
+'---------
+
+
+'-----------
+' Script End
+'-----------
